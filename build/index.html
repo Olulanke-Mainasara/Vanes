@@ -9,9 +9,147 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="min-h-screen">
-    <div class="max-w-[1440px]">
-        
+<body class="bg-[#262626]">
+    <div class="max-w-[1440px] h-screen relative p-8 flex gap-8 text-white">
+        <nav class="h-full w-[8%] rounded-3xl border flex flex-col text-center py-8 gap-14">
+            <a href="#" class="text-7xl">G</a>
+
+            <ul class="flex flex-col gap-11">
+                <li>Weather</li>
+                <li>Cities</li>
+                <li>Mao</li>
+                <li>Settings</li>
+                <li>Get the app</li>
+            </ul>
+        </nav>
+
+        <section class="w-3/5 h-full overflow-y-scroll flex flex-col gap-6">
+            <form action="" method="get" class="w-full h-14 border rounded-xl flex items-center overflow-hidden">
+                <input title="searchBar" type="search" name="" id="" placeholder="Search for cities" class="bg-transparent w-full h-full pl-5 placeholder:text-white outline-none">
+            </form>
+
+            <section class="w-full h-52 flex gap-6">
+                <section class="w-[33.3%] h-full rounded-3xl border flex flex-col justify-center items-center gap-5 bg-[url(assets/Sunny.webp)] bg-cover">
+                    <h1 class="text-xl">Lagos, Nigeria</h1>
+                    <h1 class="text-7xl">31.</h1>
+                    <h1 class="text-xl">Sunny</h1>
+                </section>
+
+                <section class="w-[33.3%] h-full rounded-3xl border flex flex-col justify-center items-center gap-5 bg-cover">
+                    <h1 class="text-xl">Lagos, Nigeria</h1>
+                    <h1 class="text-7xl">31.</h1>
+                    <h1 class="text-xl">Sunny</h1>
+                </section>
+
+                <section class="w-[33.3%] h-full rounded-3xl border flex flex-col justify-center items-center gap-5 bg-cover">
+                    <h1 class="text-xl">Lagos, Nigeria</h1>
+                    <h1 class="text-7xl">31.</h1>
+                    <h1 class="text-xl">Sunny</h1>
+                </section>
+            </section>
+
+            <section class="w-full h-52 flex flex-col justify-between">
+                <h1>Today's Forecast</h1>
+
+                <section class="w-full h-[75%] flex border rounded-3xl py-4">
+                    <div class="w-[16.7%] h-full border-r border-white flex flex-col justify-between items-center">
+                        <h1 class="text-sm">6:00 AM</h1>
+                        <h1>I</h1>
+                        <h1 class="text-2xl">31.</h1>
+                    </div>
+                    <div class="w-[16.7%] h-full border-r border-white flex flex-col justify-between items-center">
+                        <h1 class="text-sm">6:00 AM</h1>
+                        <h1>I</h1>
+                        <h1 class="text-2xl">31.</h1>
+                    </div>
+                    <div class="w-[16.7%] h-full border-r border-white flex flex-col justify-between items-center">
+                        <h1 class="text-sm">6:00 AM</h1>
+                        <h1>I</h1>
+                        <h1 class="text-2xl">31.</h1>
+                    </div>
+                    <div class="w-[16.7%] h-full border-r border-white flex flex-col justify-between items-center">
+                        <h1 class="text-sm">6:00 AM</h1>
+                        <h1>I</h1>
+                        <h1 class="text-2xl">31.</h1>
+                    </div>
+                    <div class="w-[16.7%] h-full border-r border-white flex flex-col justify-between items-center">
+                        <h1 class="text-sm">6:00 AM</h1>
+                        <h1>I</h1>
+                        <h1 class="text-2xl">31.</h1>
+                    </div>
+                    <div class="w-[16.7%] h-full flex flex-col justify-between items-center">
+                        <h1 class="text-sm">6:00 AM</h1>
+                        <h1>I</h1>
+                        <h1 class="text-2xl">31.</h1>
+                    </div>
+                </section>
+            </section>
+
+            <section class="w-full h-60 flex flex-col justify-between">
+                <h1>Air Conditions</h1>
+
+                <section class="h-[80%] flex gap-6">
+                    <div class="flex flex-col h-full w-1/4 border rounded-3xl p-4">
+                        <h1>I Real Feel</h1>
+                        <h1 class="text-3xl">31.</h1>
+                    </div>
+                    <div class="flex flex-col h-full w-1/4 border rounded-3xl p-4">
+                        <h1>I Real Feel</h1>
+                        <h1 class="text-3xl">31.</h1>
+                    </div>
+                    <div class="flex flex-col h-full w-1/4 border rounded-3xl p-4">
+                        <h1>I Real Feel</h1>
+                        <h1 class="text-3xl">31.</h1>
+                    </div>
+                    <div class="flex flex-col h-full w-1/4 border rounded-3xl p-4">
+                        <h1>I Real Feel</h1>
+                        <h1 class="text-3xl">31.</h1>
+                    </div>
+                </section>
+            </section>
+        </section>
+
+        <section class="w-[30%] h-full border rounded-3xl flex flex-col gap-4 p-7">
+            <h1>7 - Day Forecast</h1>
+
+            <section class="w-full h-full overflow-hidden flex flex-col">
+                <div class="w-full h-[20%] border-white border-b flex justify-between items-center">
+                    <h1>Today</h1>
+                    <h1>I Sunny</h1>
+                    <h1>37/<span class="text-gray-500">22</span></h1>
+                </div>
+                <div class="w-full h-[20%] border-white border-b flex justify-between items-center">
+                    <h1>Tue</h1>
+                    <h1>I Sunny</h1>
+                    <h1>37/<span class="text-gray-500">22</span></h1>
+                </div>
+                <div class="w-full h-[20%] border-white border-b flex justify-between items-center">
+                    <h1>Wed</h1>
+                    <h1>I Sunny</h1>
+                    <h1>37/<span class="text-gray-500">22</span></h1>
+                </div>
+                <div class="w-full h-[20%] border-white border-b flex justify-between items-center">
+                    <h1>Thu</h1>
+                    <h1>I Sunny</h1>
+                    <h1>37/<span class="text-gray-500">22</span></h1>
+                </div>
+                <div class="w-full h-[20%] border-white border-b flex justify-between items-center">
+                    <h1>Fri</h1>
+                    <h1>I Sunny</h1>
+                    <h1>37/<span class="text-gray-500">22</span></h1>
+                </div>
+                <div class="w-full h-[20%] border-white border-b flex justify-between items-center">
+                    <h1>Sat</h1>
+                    <h1>I Sunny</h1>
+                    <h1>37/<span class="text-gray-500">22</span></h1>
+                </div>
+                <div class="w-full h-[20%] flex justify-between items-center">
+                    <h1>Sun</h1>
+                    <h1>I Sunny</h1>
+                    <h1>37/<span class="text-gray-500">22</span></h1>
+                </div>
+            </section>
+        </section>
     </div>
 </body>
 </html>
