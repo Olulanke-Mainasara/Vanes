@@ -154,7 +154,7 @@ function getCurrentLocation() {
           } else {
             dayForecast.innerHTML = `
                     <div class="flex justify-between items-center h-full">
-                        <h1>${splittedElement[2]}</h1>
+                        <h1>${splittedElement[1]} / ${splittedElement[2]}</h1>
                         <h1 id=${forecastId}></h1>
                         <h1>${jsonData.daily.temperature_2m_min[position]} -<span> ${jsonData.daily.temperature_2m_max[position]}</span></h1>
                     </div>
@@ -242,7 +242,30 @@ function getCurrentLocation() {
       .then((uvData) => {
         console.log(uvData);
         const uvIndex = document.getElementById("uvIndex");
+        const exposureLevel = document.getElementById("exposureLevel");
+
         uvIndex.innerText = Math.round(uvData.result.uv);
+
+        if (Math.round(uvData.result.uv) < 2) {
+          exposureLevel.innerText = "Low";
+        } else if (
+          (Math.round(uvData.result.uv) >= 3) &
+          (Math.round(uvData.result.uv) <= 5)
+        ) {
+          exposureLevel.innerText = "Moderate";
+        } else if (
+          (Math.round(uvData.result.uv) >= 6) &
+          (Math.round(uvData.result.uv) <= 8)
+        ) {
+          exposureLevel.innerText = "High";
+        } else if (
+          (Math.round(uvData.result.uv) >= 9) &
+          (Math.round(uvData.result.uv) <= 10)
+        ) {
+          exposureLevel.innerText = "Very High";
+        } else if (Math.round(uvData.result.uv) >= 11 ) {
+          exposureLevel.innerText = "Extreme";
+        }
       })
       .catch((err) => console.log("Error: ", err));
   });
