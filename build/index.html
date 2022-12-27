@@ -11,9 +11,9 @@
 
     <script src="https://kit.fontawesome.com/aae4243485.js" crossorigin="anonymous"></script>
 </head>
-<body class="bg-[url(assets/Sunny.webp)] bg-cover">
-    <div class="max-w-[1440px] h-screen relative p-8 flex gap-8 text-white backdrop-brightness-50">
-        <nav class="relative h-full w-[8%] rounded-3xl border flex flex-col text-center py-8 gap-14">
+<body class="bg-[#262626]">
+    <div class="max-w-[1920px] h-screen relative p-8 flex gap-8 text-white mx-auto">
+        <nav class="relative h-full w-[8%] rounded-3xl border flex flex-col text-center py-8 gap-14 bg-backingsss">
             <a href="#" class="text-7xl">G</a>
 
             <ul class="flex flex-col gap-11">
@@ -28,11 +28,11 @@
         </nav>
 
         <section class="w-3/5 h-full overflow-y-scroll flex flex-col gap-6">
-            <form action="" method="get" class="w-full h-14 border rounded-xl flex items-center overflow-hidden">
+            <form action="" method="get" class="w-full h-[10%] border rounded-xl flex items-center overflow-hidden">
                 <input title="searchBar" type="search" name="" id="" placeholder="Search for cities" class="bg-transparent w-full h-full pl-5 placeholder:text-white outline-none">
             </form>
 
-            <section class="w-full h-52 flex gap-6">
+            <section class="w-full h-[30%] flex gap-6">
                 <section class="w-[33.3%] h-full rounded-3xl border flex flex-col justify-center items-center gap-5">
                     <h1 id="currentLocation" class="text-lg"></h1>
                     <h1 id="currentWeather" class="text-7xl"></h1>
@@ -47,12 +47,12 @@
 
                 <section class="w-[33.3%] h-full rounded-3xl border flex flex-col justify-center items-center gap-5 bg-cover">
                     <h1 class="text-xl">UV Index</h1>
-                    <h1 id="uvIndex" class="text-7xl">8</h1>
+                    <h1 id="uvIndex" class="text-7xl"></h1>
                     <h1 class="text-xl">uv</h1>
                 </section>
             </section>
 
-            <section class="w-full h-52 flex flex-col justify-between">
+            <section class="w-full h-[30%] flex flex-col justify-between">
                 <h1>Today's Forecast</h1>
 
                 <section class="w-full h-[75%] flex border rounded-3xl py-4">
@@ -89,34 +89,34 @@
                 </section>
             </section>
 
-            <section class="w-full h-60 flex flex-col justify-between">
+            <section class="w-full h-[35%] flex flex-col justify-between">
                 <h1>Air Conditions</h1>
 
                 <section class="h-[80%] flex gap-6">
                     <div class="flex flex-col h-full w-1/4 border rounded-3xl p-4 justify-end">
                         <h1 class="text-lg">I Real Feel</h1>
-                        <h1 class="text-3xl">31.</h1>
+                        <h1 id="realFeel" class="text-3xl"></h1>
                     </div>
                     <div class="flex flex-col h-full w-1/4 border rounded-3xl p-4 justify-end">
                         <h1 class="text-lg">I Visibility</h1>
-                        <h1 class="text-3xl">31.</h1>
+                        <h1 id="visibility" class="text-3xl"></h1>
                     </div>
                     <div class="flex flex-col h-full w-1/4 border rounded-3xl p-4 justify-end">
                         <h1 class="text-lg">I Humidity</h1>
-                        <h1 class="text-3xl">31.</h1>
+                        <h1 id="humidity" class="text-3xl"></h1>
                     </div>
-                    <div class="flex flex-col h-full w-1/4 border rounded-3xl p-4 justify-end">
+                    <div class="flex flex-col h-full w-1/4 border rounded-3xl p-4 justify-center">
                         <h1 class="text-lg">I Sunset</h1>
-                        <h1 class="text-3xl">31.</h1>
+                        <h1 id="sunset" class="text-3xl"></h1>
                         <br>
                         <h1 class="text-lg">I Sunrise</h1>
-                        <h1 class="text-3xl">31.</h1>
+                        <h1 id="sunrise" class="text-3xl"></h1>
                     </div>
                 </section>
             </section>
         </section>
 
-        <section class="w-[30%] h-full border rounded-3xl flex flex-col gap-4 p-7">
+        <section class="w-[30%] h-full border rounded-3xl flex flex-col gap-6 p-7">
             <h1>7 - Day Forecast</h1>
 
             <section id="dayForecasts" class="w-full h-full overflow-hidden flex flex-col last:border-b-0">

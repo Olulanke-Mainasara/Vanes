@@ -105,7 +105,7 @@ function gettingCurrentConditions(usingToDet, element) {
 function getCurrentLocation() {
   navigator.geolocation.getCurrentPosition((result) => {
     fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${result.coords.latitude}&longitude=${result.coords.longitude}&hourly=temperature_2m,relativehumidity_2m,weathercode,visibility&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&timezone=auto`
+      `https://api.open-meteo.com/v1/forecast?latitude=${result.coords.latitude}&longitude=${result.coords.longitude}&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,weathercode,visibility&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset&current_weather=true&timezone=auto`
     )
       .then((resp) => resp.json())
       .then((jsonData) => {
@@ -121,58 +121,129 @@ function getCurrentLocation() {
         const currentCondition = document.getElementById("currentCondition");
         let weatherCode = jsonData.current_weather.weathercode;
         gettingCurrentConditions(weatherCode, currentCondition);
-        
+
         const windSpeed = document.getElementById("windSpeed");
         windSpeed.innerText = jsonData.current_weather.windspeed;
 
-        const dayForecasts = document.getElementById("dayForecasts")
+        const dayForecasts = document.getElementById("dayForecasts");
         let position = 0;
 
         const accurateDate = new Date();
-        console.log("The accurate date is: " + accurateDate.getDate());
 
-        jsonData.daily.time.forEach(element => {
-            let weatherCode = jsonData.daily.weathercode[position];
-            console.log(weatherCode);
+        jsonData.daily.time.forEach((element) => {
+          let weatherCode = jsonData.daily.weathercode[position];
 
-            let dayForecast = document.createElement("div");
-            dayForecast.classList.add("w-full");
-            dayForecast.classList.add("h-[20%]");
-            dayForecast.classList.add("border-white");
-            dayForecast.classList.add("border-b");
+          let dayForecast = document.createElement("div");
+          dayForecast.classList.add("w-full");
+          dayForecast.classList.add("h-[20%]");
+          dayForecast.classList.add("border-white");
+          dayForecast.classList.add("border-t");
 
-            let forecastId = "Forecast" + position;
-            console.log(forecastId);
+          let forecastId = "Forecast" + position;
 
-            let splittedElement = element.split("-");
+          let splittedElement = element.split("-");
 
-            if (splittedElement[2] == accurateDate.getDate()) {
-                dayForecast.innerHTML = `
+          if (splittedElement[2] == accurateDate.getDate()) {
+            dayForecast.innerHTML = `
                     <div class="flex justify-between items-center h-full">
                         <h1>Today</h1>
                         <h1 id=${forecastId}></h1>
-                        <h1>22 -<span class="text-gray-500"> 37</span></h1>
+                        <h1>${jsonData.daily.temperature_2m_min[position]} -<span> ${jsonData.daily.temperature_2m_max[position]}</span></h1>
                     </div>
-                `; 
-            }
-            else {
-                dayForecast.innerHTML = `
+                `;
+          } else {
+            dayForecast.innerHTML = `
                     <div class="flex justify-between items-center h-full">
                         <h1>${splittedElement[2]}</h1>
                         <h1 id=${forecastId}></h1>
-                        <h1>22 -<span class="text-gray-500"> 37</span></h1>
+                        <h1>${jsonData.daily.temperature_2m_min[position]} -<span> ${jsonData.daily.temperature_2m_max[position]}</span></h1>
                     </div>
                 `;
-            }
-            
-            dayForecasts.append(dayForecast);
+          }
 
-            const forecastResult = document.getElementById(`${forecastId}`);
-            gettingCurrentConditions(weatherCode, forecastResult);
+          dayForecasts.append(dayForecast);
 
-            position++;
+          const forecastResult = document.getElementById(`${forecastId}`);
+          gettingCurrentConditions(weatherCode, forecastResult);
+
+          position++;
+        });
+
+        jsonData.hourly.time.forEach((element) => {
+          let splittedElement = element.split("T");
+
+          let furtherSplitDate = splittedElement[0].split("-");
+
+          let furtherSplitTime = splittedElement[1].split(":");
+
+          if (
+            (furtherSplitDate[2] == accurateDate.getDate()) &
+            (furtherSplitTime[0] == accurateDate.getHours())
+          ) {
+            const realFeel = document.getElementById("realFeel");
+            const visibility = document.getElementById("visibility");
+            const humidity = document.getElementById("humidity");
+
+            const elementIndex = jsonData.hourly.time.indexOf(element);
+
+            realFeel.innerText =
+              jsonData.hourly.apparent_temperature[elementIndex] + "°";
+            visibility.innerText =
+              jsonData.hourly.visibility[elementIndex] / 1000 + " km";
+            humidity.innerText =
+              jsonData.hourly.relativehumidity_2m[elementIndex] + "%";
+          }
+        });
+
+        const sunset = document.getElementById("sunset");
+        const sunrise = document.getElementById("sunrise");
+
+        jsonData.daily.sunset.forEach((element) => {
+          let splittedSunElement = element.split("T");
+
+          let furtherSplitSun = splittedSunElement[0].split("-");
+
+          if (furtherSplitSun[2] == accurateDate.getDate()) {
+            sunset.innerHTML =
+              splittedSunElement[1] + `<span class="text-2xl">PM</span>`;
+          }
+        });
+
+        jsonData.daily.sunrise.forEach((element) => {
+          let splittedSunElement = element.split("T");
+
+          let furtherSplitSun = splittedSunElement[0].split("-");
+
+          let furtherSplitRise = splittedSunElement[1].split("");
+
+          if (furtherSplitSun[2] == accurateDate.getDate()) {
+            sunrise.innerHTML =
+              furtherSplitRise[1] + ":" + furtherSplitRise[3] + furtherSplitRise[4] + `<span class="text-2xl">AM</span>`;
+          }
         });
       })
       .catch((err) => console.log("Error: " + err));
+
+    let myHeaders = new Headers();
+    myHeaders.append("x-access-token", "openuv-2xtc3tlc6dy4ed-io");
+    myHeaders.append("Content-Type", "application/json");
+
+    let requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+
+    fetch(
+      "https://api.openuv.io/api/v1/uv?lat=6.62&lng=3.38&alt=100&dt=",
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((uvData) => {
+        console.log(uvData);
+        const uvIndex = document.getElementById("uvIndex");
+        uvIndex.innerText = Math.round(uvData.result.uv);
+      })
+      .catch((err) => console.log("Error: ", err));
   });
 }
