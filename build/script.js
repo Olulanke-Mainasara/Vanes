@@ -2,10 +2,9 @@ geolocationSupported();
 
 function geolocationSupported() {
   if (navigator.geolocation) {
-    console.log("Geolocation is supported by this browser :)");
     getWeatherForecast();
   } else {
-    console.log("Error: Geolocation is NOT supported by this browser :(");
+    alert("Error: Geolocation is NOT supported by this browser :(");
   }
 }
 
@@ -109,8 +108,6 @@ function getWeatherForecast() {
     )
       .then((resp) => resp.json())
       .then((jsonData) => {
-        console.log(jsonData);
-
         const currentWeather = document.getElementById("currentWeather");
         currentWeather.innerText = jsonData.current_weather.temperature + "°";
 
@@ -145,7 +142,7 @@ function getWeatherForecast() {
 
           if (splittedElement[2] == accurateDate.getDate()) {
             dayForecast.innerHTML = `
-                    <div class="flex justify-between items-center h-full">
+                    <div class="flex justify-between items-center h-full allIL:h-20">
                         <h1>Today</h1>
                         <h1 id=${forecastId}></h1>
                         <h1>${jsonData.daily.temperature_2m_min[position]} -<span> ${jsonData.daily.temperature_2m_max[position]}</span></h1>
@@ -153,7 +150,7 @@ function getWeatherForecast() {
                 `;
           } else {
             dayForecast.innerHTML = `
-                    <div class="flex justify-between items-center h-full">
+                    <div class="flex justify-between items-center h-full allIL:h-20">
                         <h1>${splittedElement[1]} / ${splittedElement[2]}</h1>
                         <h1 id=${forecastId}></h1>
                         <h1>${jsonData.daily.temperature_2m_min[position]} -<span> ${jsonData.daily.temperature_2m_max[position]}</span></h1>
@@ -205,7 +202,8 @@ function getWeatherForecast() {
 
           if (furtherSplitSun[2] == accurateDate.getDate()) {
             sunset.innerHTML =
-              splittedSunElement[1] + `<span class="text-2xl">PM</span>`;
+              splittedSunElement[1] +
+              `<span class="text-2xl allEM:text-xl allT:text-lg">PM</span>`;
           }
         });
 
@@ -218,7 +216,11 @@ function getWeatherForecast() {
 
           if (furtherSplitSun[2] == accurateDate.getDate()) {
             sunrise.innerHTML =
-              furtherSplitRise[1] + ":" + furtherSplitRise[3] + furtherSplitRise[4] + `<span class="text-2xl">AM</span>`;
+              furtherSplitRise[1] +
+              ":" +
+              furtherSplitRise[3] +
+              furtherSplitRise[4] +
+              `<span class="text-2xl allEM:text-xl allT:text-lg">AM</span>`;
           }
         });
 
@@ -249,10 +251,8 @@ function getWeatherForecast() {
             let forecastId = "Forecast" + elementPosition;
 
             let newHour = document.createElement("div");
-            newHour.classList.add("w-40");
+            newHour.classList.add("w-32");
             newHour.classList.add("h-full");
-            newHour.classList.add("border-r");
-            newHour.classList.add("border-white");
             if (
               (furtherSplitDate[2] == accurateDate.getDate()) &
               (convertedTime == accurateDate.getHours())
