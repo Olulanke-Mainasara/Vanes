@@ -13,7 +13,7 @@
 </head>
 <body class="bg-[#262626]">
     <div class="max-w-[1920px] h-screen relative p-8 flex gap-8 text-white mx-auto">
-        <nav class="relative h-full w-[8%] rounded-3xl border flex flex-col text-center py-8 gap-14 shadow-2xl">
+        <nav class="h-full w-[8%] rounded-3xl border flex flex-col justify-between text-center py-8 shadow-2xl">
             <a href="#" class="text-7xl">G</a>
 
             <ul class="flex flex-col gap-11">
@@ -24,7 +24,7 @@
                 <li><a title="Get the app" href="#"><i class="fa-solid fa-mobile text-xl"></i></a></li>
             </ul>
 
-            <a title="Sign-in" href="#" class="absolute bottom-9 left-1/2 -translate-x-1/2"><i class="fa-solid fa-user text-lg border rounded-full p-3"></i></a>
+            <a title="Sign-in" href="#"><i class="fa-solid fa-user text-lg border rounded-full p-3"></i></a>
         </nav>
 
         <section class="w-3/5 h-full overflow-y-scroll flex flex-col gap-6">
@@ -32,20 +32,20 @@
                 <input title="searchBar" type="search" name="" id="" placeholder="Search for cities" class="bg-transparent w-full h-full pl-5 placeholder:text-white outline-none">
             </form>
 
-            <section class="w-full h-[30%] flex gap-6">
-                <section class="w-[33.3%] h-full rounded-3xl border flex flex-col justify-center items-center gap-5 shadow-2xl">
+            <section class="w-full h-[30%] grid grid-cols-3 gap-6">
+                <section class="h-full rounded-3xl border flex flex-col justify-center items-center gap-5 shadow-2xl">
                     <h1 id="currentLocation" class="text-lg"></h1>
                     <h1 id="currentWeather" class="text-7xl"></h1>
                     <h1 id="currentCondition" class="text-lg"></h1>
                 </section>
 
-                <section class="w-[33.3%] h-full rounded-3xl border flex flex-col justify-center items-center gap-5 shadow-2xl">
+                <section class="h-full rounded-3xl border flex flex-col justify-center items-center gap-5 shadow-2xl">
                     <h1 class="text-xl">Wind Status</h1>
                     <h1 id="windSpeed" class="text-7xl"></h1>
                     <h1 class="text-xl">Km/h</h1>
                 </section>
 
-                <section class="w-[33.3%] h-full rounded-3xl border flex flex-col justify-center items-center gap-5 shadow-2xl">
+                <section class="h-full rounded-3xl border flex flex-col justify-center items-center gap-5 shadow-2xl">
                     <h1 class="text-xl">UV Index</h1>
                     <h1 id="uvIndex" class="text-7xl"></h1>
                     <h1 id="exposureLevel" class="text-xl"></h1>
@@ -55,61 +55,34 @@
             <section class="w-full h-[30%] flex flex-col justify-between">
                 <h1>Today's Forecast</h1>
 
-                <section class="w-full h-[75%] flex border rounded-3xl py-4 shadow-2xl">
-                    <div class="w-[16.7%] h-full border-r border-white flex flex-col justify-between items-center">
-                        <h1 class="text-sm">6:00 AM</h1>
-                        <h1 class="text-2xl"><i class="fa-solid fa-sun"></i></h1>
-                        <h1 class="text-2xl">31.</h1>
-                    </div>
-                    <div class="w-[16.7%] h-full border-r border-white flex flex-col justify-between items-center">
-                        <h1 class="text-sm">9:00 AM</h1>
-                        <h1 class="text-2xl"><i class="fa-solid fa-sun"></i></h1>
-                        <h1 class="text-2xl">31.</h1>
-                    </div>
-                    <div class="w-[16.7%] h-full border-r border-white flex flex-col justify-between items-center">
-                        <h1 class="text-sm">12:00 PM</h1>
-                        <h1 class="text-2xl"><i class="fa-solid fa-sun"></i></h1>
-                        <h1 class="text-2xl">31.</h1>
-                    </div>
-                    <div class="w-[16.7%] h-full border-r border-white flex flex-col justify-between items-center">
-                        <h1 class="text-sm">3:00 PM</h1>
-                        <h1 class="text-2xl"><i class="fa-solid fa-sun"></i></h1>
-                        <h1 class="text-2xl">31.</h1>
-                    </div>
-                    <div class="w-[16.7%] h-full border-r border-white flex flex-col justify-between items-center">
-                        <h1 class="text-sm">6:00 PM</h1>
-                        <h1 class="text-2xl"><i class="fa-solid fa-sun"></i></h1>
-                        <h1 class="text-2xl">31.</h1>
-                    </div>
-                    <div class="w-[16.7%] h-full border-r border-white flex flex-col justify-between items-center">
-                        <h1 class="text-sm">9:00 PM</h1>
-                        <h1 class="text-2xl"><i class="fa-solid fa-sun"></i></h1>
-                        <h1 class="text-2xl">31.</h1>
-                    </div>
+                <section class="w-full h-[75%] border rounded-3xl py-4 shadow-2xl overflow-scroll">
+                    <section id="hourlyForecasts" class="h-full w-fit flex">
+
+                    </section>
                 </section>
             </section>
 
             <section class="w-full h-[35%] flex flex-col justify-between">
                 <h1>Air Conditions</h1>
 
-                <section class="h-[80%] flex gap-6">
-                    <div class="flex flex-col h-full w-1/4 border rounded-3xl p-4 justify-end shadow-2xl">
-                        <h1 class="text-lg">I Real Feel</h1>
+                <section class="h-[80%] grid grid-cols-4 gap-6">
+                    <div class="flex flex-col h-full border rounded-3xl p-4 justify-end shadow-2xl">
+                        <h1 class="text-lg">Real Feel</h1>
                         <h1 id="realFeel" class="text-3xl"></h1>
                     </div>
-                    <div class="flex flex-col h-full w-1/4 border rounded-3xl p-4 justify-end shadow-2xl">
-                        <h1 class="text-lg">I Visibility</h1>
+                    <div class="flex flex-col h-full border rounded-3xl p-4 justify-end shadow-2xl">
+                        <h1 class="text-lg">Visibility</h1>
                         <h1 id="visibility" class="text-3xl"></h1>
                     </div>
-                    <div class="flex flex-col h-full w-1/4 border rounded-3xl p-4 justify-end shadow-2xl">
-                        <h1 class="text-lg">I Humidity</h1>
+                    <div class="flex flex-col h-full border rounded-3xl p-4 justify-end shadow-2xl">
+                        <h1 class="text-lg">Humidity</h1>
                         <h1 id="humidity" class="text-3xl"></h1>
                     </div>
-                    <div class="flex flex-col h-full w-1/4 border rounded-3xl p-4 justify-center shadow-2xl">
-                        <h1 class="text-lg">I Sunset</h1>
+                    <div class="flex flex-col h-full border rounded-3xl p-4 justify-center shadow-2xl">
+                        <h1 class="text-lg">Sunset</h1>
                         <h1 id="sunset" class="text-3xl"></h1>
                         <br>
-                        <h1 class="text-lg">I Sunrise</h1>
+                        <h1 class="text-lg">Sunrise</h1>
                         <h1 id="sunrise" class="text-3xl"></h1>
                     </div>
                 </section>

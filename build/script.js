@@ -3,7 +3,7 @@ geolocationSupported();
 function geolocationSupported() {
   if (navigator.geolocation) {
     console.log("Geolocation is supported by this browser :)");
-    getCurrentLocation();
+    getWeatherForecast();
   } else {
     console.log("Error: Geolocation is NOT supported by this browser :(");
   }
@@ -102,7 +102,7 @@ function gettingCurrentConditions(usingToDet, element) {
   }
 }
 
-function getCurrentLocation() {
+function getWeatherForecast() {
   navigator.geolocation.getCurrentPosition((result) => {
     fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${result.coords.latitude}&longitude=${result.coords.longitude}&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,weathercode,visibility&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset&current_weather=true&timezone=auto`
@@ -221,6 +221,75 @@ function getCurrentLocation() {
               furtherSplitRise[1] + ":" + furtherSplitRise[3] + furtherSplitRise[4] + `<span class="text-2xl">AM</span>`;
           }
         });
+
+        jsonData.hourly.time.filter(element => {
+          let splittedElement = element.split("T");
+          
+          let furtherSplitDate = splittedElement[0].split("-")
+
+          let furtherSplitTime = splittedElement[1].split(":")
+
+          let convertedDate = parseInt(furtherSplitDate[2])
+
+          let convertedTime = parseInt(furtherSplitTime[0]);
+
+          let elementPosition =jsonData.hourly.time.indexOf(element);
+
+          if (convertedDate > (accurateDate.getDate()) + 1 || convertedDate < (accurateDate.getDate())) {
+            return false
+          } 
+          else if ((furtherSplitDate[2] == accurateDate.getDate()) & (convertedTime < accurateDate.getHours())) {
+            return false;
+          } 
+          else {
+            const hourlyForecasts = document.getElementById("hourlyForecasts");
+
+            let weatherCode = jsonData.hourly.weathercode[elementPosition];
+
+            let forecastId = "Forecast" + elementPosition;
+
+            let newHour = document.createElement("div");
+            newHour.classList.add("w-40");
+            newHour.classList.add("h-full");
+            newHour.classList.add("border-r");
+            newHour.classList.add("border-white");
+            if (
+              (furtherSplitDate[2] == accurateDate.getDate()) &
+              (convertedTime == accurateDate.getHours())
+            ) {
+              newHour.innerHTML = `
+                <div class="h-full flex flex-col justify-between items-center">
+                  <h1 class="text-base">Now</h1>
+                  <h1 id="${forecastId}" class="text-xl"></h1>
+                  <h1 class="text-2xl">${jsonData.hourly.temperature_2m[elementPosition]}</h1>
+                </div>
+              `;
+            } else {
+              if (convertedTime > 11) {
+                newHour.innerHTML = `
+                  <div class="h-full flex flex-col justify-between items-center">
+                    <h1 class="text-base">${splittedElement[1]}PM</h1>
+                    <h1 id="${forecastId}" class="text-xl"></h1>
+                    <h1 class="text-2xl">${jsonData.hourly.temperature_2m[elementPosition]}</h1>
+                  </div>
+                `;
+              } else {
+                newHour.innerHTML = `
+                  <div class="h-full flex flex-col justify-between items-center">
+                    <h1 class="text-base">${splittedElement[1]}AM</h1>
+                    <h1 id="${forecastId}" class="text-xl"></h1>
+                    <h1 class="text-2xl">${jsonData.hourly.temperature_2m[elementPosition]}</h1>
+                  </div>
+                `;
+              }
+            }
+
+            hourlyForecasts.append(newHour);
+
+            const forecastResult = document.getElementById(`${forecastId}`);
+            gettingCurrentConditions(weatherCode, forecastResult);
+          }
+        })
       })
       .catch((err) => console.log("Error: " + err));
 
@@ -234,6 +303,7 @@ function getCurrentLocation() {
       redirect: "follow",
     };
 
+    /*
     fetch(
       "https://api.openuv.io/api/v1/uv?lat=6.62&lng=3.38&alt=100&dt=",
       requestOptions
@@ -268,5 +338,6 @@ function getCurrentLocation() {
         }
       })
       .catch((err) => console.log("Error: ", err));
+    */
   });
 }
