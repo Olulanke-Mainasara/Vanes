@@ -267,7 +267,7 @@ function getWeatherForecast() {
               (convertedTime == accurateDate.getHours())
             ) {
               newHour.innerHTML = `
-                <div class="h-full flex flex-col justify-between items-center">
+                <div class="h-full flex flex-col justify-around items-center">
                   <h1 class="text-base">Now</h1>
                   <h1 id="${forecastId}" class="text-xl"></h1>
                   <h1 class="text-2xl">${jsonData.hourly.temperature_2m[elementPosition]}</h1>
@@ -276,7 +276,7 @@ function getWeatherForecast() {
             } else {
               if (convertedTime > 11) {
                 newHour.innerHTML = `
-                  <div class="h-full flex flex-col justify-between items-center">
+                  <div class="h-full flex flex-col justify-around items-center">
                     <h1 class="text-base">${splittedElement[1]}PM</h1>
                     <h1 id="${forecastId}" class="text-xl"></h1>
                     <h1 class="text-2xl">${jsonData.hourly.temperature_2m[elementPosition]}</h1>
@@ -284,7 +284,7 @@ function getWeatherForecast() {
                 `;
               } else {
                 newHour.innerHTML = `
-                  <div class="h-full flex flex-col justify-between items-center">
+                  <div class="h-full flex flex-col justify-around items-center">
                     <h1 class="text-base">${splittedElement[1]}AM</h1>
                     <h1 id="${forecastId}" class="text-xl"></h1>
                     <h1 class="text-2xl">${jsonData.hourly.temperature_2m[elementPosition]}</h1>
