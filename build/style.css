@@ -542,12 +542,13 @@ video {
   height: 8%;
 }
 
-.h-\[30\%\] {
-  height: 30%;
+.h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
-.h-\[75\%\] {
-  height: 75%;
+.h-44 {
+  height: 11rem;
 }
 
 .h-\[80\%\] {
@@ -595,6 +596,10 @@ video {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.grid-rows-3 {
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -621,6 +626,10 @@ video {
 
 .gap-11 {
   gap: 2.75rem;
+}
+
+.gap-10 {
+  gap: 2.5rem;
 }
 
 .gap-6 {
@@ -703,6 +712,21 @@ video {
   padding-bottom: 1rem;
 }
 
+.px-7 {
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
+
+.py-7 {
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .pl-5 {
   padding-left: 1.25rem;
 }
@@ -781,6 +805,13 @@ video {
   border-bottom-width: 0px;
 }
 
+@media (min-width: 0px) and (max-width: 319px) {
+  .xtraSmall\:px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
 @media (max-width: 321px) {
   .allT\:mb-\[24\%\] {
     margin-bottom: 24%;
@@ -790,8 +821,16 @@ video {
     height: 11rem;
   }
 
-  .allT\:h-36 {
-    height: 9rem;
+  .allT\:h-32 {
+    height: 8rem;
+  }
+
+  .allT\:h-40 {
+    height: 10rem;
+  }
+
+  .allT\:grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 
   .allT\:grid-cols-2 {
@@ -815,6 +854,16 @@ video {
     padding-right: 0px;
   }
 
+  .allT\:px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .allT\:px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
   .allT\:text-5xl {
     font-size: 3rem;
     line-height: 1;
@@ -832,8 +881,8 @@ video {
 }
 
 @media (min-width: 322px) and (max-width: 767px) {
-  .allEM\:mb-\[18\%\] {
-    margin-bottom: 18%;
+  .allEM\:mb-\[19\%\] {
+    margin-bottom: 19%;
   }
 
   .allEM\:h-44 {
@@ -936,6 +985,10 @@ video {
     left: 0px;
   }
 
+  .allIL\:flex {
+    display: flex;
+  }
+
   .allIL\:h-fit {
     height: -moz-fit-content;
     height: fit-content;
@@ -947,10 +1000,6 @@ video {
 
   .allIL\:h-14 {
     height: 3.5rem;
-  }
-
-  .allIL\:h-40 {
-    height: 10rem;
   }
 
   .allIL\:h-20 {
@@ -975,6 +1024,10 @@ video {
 
   .allIL\:items-center {
     align-items: center;
+  }
+
+  .allIL\:gap-10 {
+    gap: 2.5rem;
   }
 
   .allIL\:rounded-none {

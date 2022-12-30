@@ -104,7 +104,7 @@ function gettingCurrentConditions(usingToDet, element) {
 function getWeatherForecast() {
   navigator.geolocation.getCurrentPosition((result) => {
     fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${result.coords.latitude}&longitude=${result.coords.longitude}&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,weathercode,visibility&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset&current_weather=true&timezone=auto`
+      `https://api.open-meteo.com/v1/forecast?latitude=${result.coords.latitude}&longitude=${result.coords.longitude}&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,weathercode,pressure_msl,visibility,windspeed_80m,winddirection_80m&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset&current_weather=true&windspeed_unit=ms&timezone=auto`
     )
       .then((resp) => resp.json())
       .then((jsonData) => {
@@ -118,9 +118,6 @@ function getWeatherForecast() {
         const currentCondition = document.getElementById("currentCondition");
         let weatherCode = jsonData.current_weather.weathercode;
         gettingCurrentConditions(weatherCode, currentCondition);
-
-        const windSpeed = document.getElementById("windSpeed");
-        windSpeed.innerText = jsonData.current_weather.windspeed;
 
         const dayForecasts = document.getElementById("dayForecasts");
         let position = 0;
@@ -180,15 +177,23 @@ function getWeatherForecast() {
             const realFeel = document.getElementById("realFeel");
             const visibility = document.getElementById("visibility");
             const humidity = document.getElementById("humidity");
+            const pressure = document.getElementById("pressure");
+            const windDirection = document.getElementById("windDirection");
+            const windSpeed = document.getElementById("windSpeed");
 
             const elementIndex = jsonData.hourly.time.indexOf(element);
 
             realFeel.innerText =
               jsonData.hourly.apparent_temperature[elementIndex] + "°";
             visibility.innerText =
-              jsonData.hourly.visibility[elementIndex] / 1000 + " km";
+              jsonData.hourly.visibility[elementIndex] / 1000 + "km";
             humidity.innerText =
               jsonData.hourly.relativehumidity_2m[elementIndex] + "%";
+            pressure.innerText =
+              Math.round(jsonData.hourly.pressure_msl[elementIndex]) + "hPa";
+            windDirection.innerText =
+              jsonData.hourly.winddirection_80m[elementIndex] + "°";
+            windSpeed.innerText = Math.round(jsonData.hourly.windspeed_80m[elementIndex]);
           }
         });
 
@@ -224,26 +229,30 @@ function getWeatherForecast() {
           }
         });
 
-        jsonData.hourly.time.filter(element => {
+        jsonData.hourly.time.filter((element) => {
           let splittedElement = element.split("T");
-          
-          let furtherSplitDate = splittedElement[0].split("-")
 
-          let furtherSplitTime = splittedElement[1].split(":")
+          let furtherSplitDate = splittedElement[0].split("-");
 
-          let convertedDate = parseInt(furtherSplitDate[2])
+          let furtherSplitTime = splittedElement[1].split(":");
+
+          let convertedDate = parseInt(furtherSplitDate[2]);
 
           let convertedTime = parseInt(furtherSplitTime[0]);
 
-          let elementPosition =jsonData.hourly.time.indexOf(element);
+          let elementPosition = jsonData.hourly.time.indexOf(element);
 
-          if (convertedDate > (accurateDate.getDate()) + 1 || convertedDate < (accurateDate.getDate())) {
-            return false
-          } 
-          else if ((furtherSplitDate[2] == accurateDate.getDate()) & (convertedTime < accurateDate.getHours())) {
+          if (
+            convertedDate > accurateDate.getDate() + 1 ||
+            convertedDate < accurateDate.getDate()
+          ) {
             return false;
-          } 
-          else {
+          } else if (
+            (furtherSplitDate[2] == accurateDate.getDate()) &
+            (convertedTime < accurateDate.getHours())
+          ) {
+            return false;
+          } else {
             const hourlyForecasts = document.getElementById("hourlyForecasts");
 
             let weatherCode = jsonData.hourly.weathercode[elementPosition];
@@ -289,7 +298,7 @@ function getWeatherForecast() {
             const forecastResult = document.getElementById(`${forecastId}`);
             gettingCurrentConditions(weatherCode, forecastResult);
           }
-        })
+        });
       })
       .catch((err) => console.log("Error: " + err));
 

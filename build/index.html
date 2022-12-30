@@ -12,87 +12,96 @@
     <script src="https://kit.fontawesome.com/aae4243485.js" crossorigin="anonymous"></script>
 </head>
 <body class="bg-[#262626]">
-    <div class="max-w-[1920px] h-screen p-8 flex gap-8 text-white mx-auto allIL:flex-col allIL:h-fit lg:p-8 md:p-6 allEM:p-4 allT:p-4">
-        <nav class="background h-full w-[8%] z-10 rounded-3xl border flex flex-col justify-between items-center py-8 shadow-2xl allIL:fixed allIL:bottom-0 allIL:left-0 allIL:w-screen allIL:rounded-none allIL:border-0 allIL:border-t allIL:border-white allIL:h-[8%] allIL:flex-row lg:px-8 md:px-8 allEM:px-0 allEM:justify-around allT:px-0 allT:justify-around">
-            <a href="#" class="text-7xl allEM:text-5xl">G</a>
+    <div class="max-w-[1920px] h-screen p-8 flex gap-8 text-white mx-auto allIL:gap-10 allIL:flex-col allIL:h-fit lg:p-8 md:p-6 allEM:p-4 allT:p-4">
+        <nav class="background h-full w-[8%] z-10 rounded-3xl flex flex-col justify-between items-center py-8 shadow-2xl allIL:fixed allIL:bottom-0 allIL:left-0 allIL:w-screen allIL:rounded-none allIL:border-0 allIL:border-t allIL:border-white allIL:h-[8%] allIL:flex-row lg:px-8 md:px-8 allEM:px-0 allEM:justify-around allT:px-0 allT:justify-around">
+            <a href="#" class="text-7xl allEM:text-5xl allT:text-5xl">G</a>
 
             <ul class="flex flex-col gap-11 allIL:flex-row allIL:items-center allEM:gap-10 allT:gap-5">
                 <li><a title="Weather" href="#"><i class="fa-solid fa-cloud text-xl"></i></a></li>
                 <li><a title="Cities" href="#"><i class="fa-solid fa-city text-xl"></i></a></li>
                 <li><a title="Map" href="#"><i class="fa-solid fa-location-dot text-xl"></i></a></li>
-                <li><a title="Settings" href="#"><i class="fa-solid fa-gear text-xl"></i></a></li>
-                <li><a title="Get the app" href="#"><i class="fa-solid fa-mobile text-xl"></i></a></li>
+                <li><a title="Theme" href="#"><i class="fa-solid fa-moon text-xl"></i></a></li>
             </ul>
 
             <a title="Sign-in" href="#"><i class="fa-solid fa-user text-lg border rounded-full p-3"></i></a>
         </nav>
 
-        <section class="w-3/5 h-full overflow-y-scroll flex flex-col gap-6 allIL:h-fit allIL:w-full hideScroll">
+        <section class="w-3/5 h-full overflow-y-scroll grid grid-rows-3 gap-10 allIL:w-full hideScroll allIL:flex allIL:flex-col">
+            <!--
             <form action="" method="get" class="w-full h-[8%] border rounded-xl flex items-center overflow-hidden shadow-2xl allIL:h-14 background">
                 <input title="searchBar" type="search" placeholder="Search for cities" class="bg-transparent w-full h-full pl-5 placeholder:text-white outline-none">
             </form>
+            --->
 
-            <section class="w-full h-[30%] grid grid-cols-3 allIL:h-fit gap-6 allEM:grid-cols-2 allT:grid-cols-2">
+            <section class="w-full grid grid-cols-3 allIL:h-fit gap-6 allEM:grid-cols-2 allT:grid-cols-1">
                 <section class="h-full rounded-3xl border flex flex-col justify-center items-center gap-5 shadow-2xl lg:h-48 md:h-48 allEM:h-44 allT:h-44">
-                    <h1 id="currentLocation" class="text-lg"></h1>
-                    <h1 id="currentWeather" class="text-7xl allEM:text-5xl allT:text-5xl"></h1>
-                    <h1 id="currentCondition" class="text-lg"></h1>
+                    <h1 id="currentLocation" class="text-lg">- -</h1>
+                    <h1 id="currentWeather" class="text-7xl allEM:text-5xl allT:text-5xl">- -</h1>
+                    <h1 id="currentCondition" class="text-lg">- -</h1>
                 </section>
 
                 <section class="h-full rounded-3xl border flex flex-col justify-center items-center gap-5 shadow-2xl lg:h-48 md:h-48 allEM:h-44 allT:h-44">
                     <h1 class="text-xl">Wind Status</h1>
-                    <h1 id="windSpeed" class="text-7xl allEM:text-5xl allT:text-5xl"></h1>
-                    <h1 class="text-xl">Km/h</h1>
+                    <h1 id="windSpeed" class="text-7xl allEM:text-5xl allT:text-5xl">- -</h1>
+                    <h1 class="text-xl">m/s</h1>
                 </section>
 
                 <section class="h-full rounded-3xl border flex flex-col justify-center items-center gap-5 shadow-2xl lg:h-48 md:h-48 allEM:h-44 allT:h-44">
-                    <h1 class="text-xl">UV Index</h1>
-                    <h1 id="uvIndex" class="text-7xl allEM:text-5xl allT:text-5xl">5</h1>
-                    <h1 id="exposureLevel" class="text-xl">Moderate</h1>
+                    <h1 class="text-xl">U.V Index</h1>
+                    <h1 id="uvIndex" class="text-7xl allEM:text-5xl allT:text-5xl">- -</h1>
+                    <h1 id="exposureLevel" class="text-xl">- -</h1>
                 </section>
             </section>
 
-            <section class="w-full h-[30%] flex flex-col gap-6 justify-between">
+            <section class="w-full h-fit flex flex-col gap-6 overflow-hidden">
                 <h1 class="text-3xl">Today's Forecast</h1>
 
-                <section class="w-full h-[75%] border rounded-3xl py-4 shadow-2xl overflow-scroll allIL:h-40 hideScroll background">
+                <section class="w-full h-44 rounded-3xl py-4 shadow-2xl overflow-scroll hideScroll background">
                     <section id="hourlyForecasts" class="h-full w-fit flex">
 
                     </section>
                 </section>
             </section>
 
-            <section class="w-full h-[30%] flex flex-col justify-between gap-6">
+            <section class="w-full h-fit flex flex-col justify-between gap-6">
                 <h1 class="text-3xl">Air Conditions</h1>
 
                 <section class="h-[80%] grid grid-cols-4 md:grid-cols-3 gap-6 allEM:grid-cols-2 allT:grid-cols-2">
-                    <div class="flex flex-col h-full border rounded-3xl p-4 justify-end shadow-2xl lg:h-48 md:h-48 allEM:h-40 allT:h-36">
+                    <div class="flex flex-col h-44 border rounded-3xl p-4 justify-end shadow-2xl allEM:h-40 allT:h-32">
                         <h1 class="text-lg">Real Feel</h1>
-                        <h1 id="realFeel" class="text-3xl allEM:text-2xl allT:text-xl"></h1>
+                        <h1 id="realFeel" class="text-3xl allEM:text-2xl allT:text-xl">- -</h1>
                     </div>
-                    <div class="flex flex-col h-full border rounded-3xl p-4 justify-end shadow-2xl lg:h-48 md:h-48 allEM:h-40 allT:h-36">
+                    <div class="flex flex-col h-44 border rounded-3xl p-4 justify-end shadow-2xl allEM:h-40 allT:h-32">
                         <h1 class="text-lg">Visibility</h1>
-                        <h1 id="visibility" class="text-3xl allEM:text-2xl allT:text-xl"></h1>
+                        <h1 id="visibility" class="text-3xl allEM:text-2xl allT:text-xl">- -</h1>
                     </div>
-                    <div class="flex flex-col h-full border rounded-3xl p-4 justify-end shadow-2xl lg:h-48 md:h-48 allEM:h-40 allT:h-36">
+                    <div class="flex flex-col h-44 border rounded-3xl p-4 justify-end shadow-2xl allEM:h-40 allT:h-32">
                         <h1 class="text-lg">Humidity</h1>
-                        <h1 id="humidity" class="text-3xl allEM:text-2xl allT:text-xl"></h1>
+                        <h1 id="humidity" class="text-3xl allEM:text-2xl allT:text-xl">- -</h1>
                     </div>
-                    <div class="flex flex-col h-full border rounded-3xl p-4 justify-center shadow-2xl lg:h-48 md:h-48 allEM:h-44">
+                    <div class="flex flex-col h-44 border rounded-3xl p-4 justify-end shadow-2xl allEM:h-40 allT:h-32">
+                        <h1 class="text-lg">Pressure</h1>
+                        <h1 id="pressure" class="text-3xl allEM:text-2xl allT:text-xl">- -</h1>
+                    </div>
+                    <div class="flex flex-col h-44 border rounded-3xl p-4 justify-end shadow-2xl allEM:h-40 allT:h-32">
+                        <h1 class="text-lg">Wind Direction</h1>
+                        <h1 id="windDirection" class="text-3xl allEM:text-2xl allT:text-xl">- -</h1>
+                    </div>
+                    <div class="flex flex-col h-44 border rounded-3xl p-4 justify-center shadow-2xl allT:h-40">
                         <h1 class="text-lg">Sunset</h1>
-                        <h1 id="sunset" class="text-3xl allEM:text-2xl allT:text-xl"></h1>
+                        <h1 id="sunset" class="text-3xl allEM:text-2xl allT:text-xl">- -</h1>
                         <br>
                         <h1 class="text-lg">Sunrise</h1>
-                        <h1 id="sunrise" class="text-3xl allEM:text-2xl allT:text-xl"></h1>
+                        <h1 id="sunrise" class="text-3xl allEM:text-2xl allT:text-xl">- -</h1>
                     </div>
                 </section>
             </section>
         </section>
 
-        <section class="w-[30%] h-full border rounded-3xl flex flex-col gap-6 p-7 shadow-2xl allIL:h-fit allIL:w-full lg:mb-[12%] md:mb-[13%] allEM:mb-[18%] allT:mb-[24%] background">
+        <section class="w-[30%] h-full rounded-3xl flex flex-col gap-6 px-7 py-7 shadow-2xl allIL:h-fit allIL:w-full lg:mb-[12%] md:mb-[13%] allEM:mb-[19%] allT:mb-[24%] xtraSmall:px-2 background">
             <h1 class="text-3xl">7 - Day Forecast</h1>
 
-            <section id="dayForecasts" class="w-full h-full overflow-hidden flex flex-col last:border-b-0">
+            <section id="dayForecasts" class="w-full h-full overflow-hidden flex flex-col">
                 
             </section>
         </section>
