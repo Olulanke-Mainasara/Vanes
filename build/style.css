@@ -546,18 +546,6 @@ video {
   height: 51px;
 }
 
-.h-10 {
-  height: 2.5rem;
-}
-
-.h-12 {
-  height: 3rem;
-}
-
-.h-52 {
-  height: 13rem;
-}
-
 .h-fit {
   height: -moz-fit-content;
   height: fit-content;
@@ -571,12 +559,16 @@ video {
   height: 11rem;
 }
 
-.h-\[20\%\] {
-  height: 20%;
-}
-
 .h-14 {
   height: 3.5rem;
+}
+
+.h-52 {
+  height: 13rem;
+}
+
+.h-\[20\%\] {
+  height: 20%;
 }
 
 .w-\[8\%\] {
@@ -587,10 +579,6 @@ video {
   width: 51px;
 }
 
-.w-10 {
-  width: 2.5rem;
-}
-
 .w-3\/5 {
   width: 60%;
 }
@@ -599,17 +587,17 @@ video {
   width: 100%;
 }
 
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 .w-52 {
   width: 13rem;
 }
 
 .w-\[30\%\] {
   width: 30%;
-}
-
-.w-fit {
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .w-32 {
@@ -668,12 +656,12 @@ video {
   gap: 2.75rem;
 }
 
-.gap-6 {
-  gap: 1.5rem;
-}
-
 .gap-10 {
   gap: 2.5rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
 }
 
 .overflow-hidden {
@@ -750,16 +738,6 @@ video {
   padding-bottom: 1.75rem;
 }
 
-.px-6 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -807,11 +785,6 @@ video {
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
-}
-
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
 }
 
 .text-white {
@@ -925,6 +898,10 @@ video {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .allT\:justify-between {
+    justify-content: space-between;
+  }
+
   .allT\:justify-around {
     justify-content: space-around;
   }
@@ -936,6 +913,21 @@ video {
   .allT\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
+  }
+
+  .allT\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .allT\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .allT\:px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 
   .allT\:text-4xl {
@@ -1093,12 +1085,12 @@ video {
     height: auto;
   }
 
-  .allIL\:h-14 {
-    height: 3.5rem;
-  }
-
   .allIL\:h-44 {
     height: 11rem;
+  }
+
+  .allIL\:h-14 {
+    height: 3.5rem;
   }
 
   .allIL\:h-20 {

@@ -14,5 +14,6 @@
 .cities {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
+    gap: 55px;
     justify-items: center;
 }
