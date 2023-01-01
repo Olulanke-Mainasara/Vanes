@@ -193,7 +193,9 @@ function getWeatherForecast() {
               Math.round(jsonData.hourly.pressure_msl[elementIndex]) + "hPa";
             windDirection.innerText =
               jsonData.hourly.winddirection_80m[elementIndex] + "°";
-            windSpeed.innerText = Math.round(jsonData.hourly.windspeed_80m[elementIndex]);
+            windSpeed.innerText = Math.round(
+              jsonData.hourly.windspeed_80m[elementIndex]
+            );
           }
         });
 
@@ -302,51 +304,143 @@ function getWeatherForecast() {
       })
       .catch((err) => console.log("Error: " + err));
 
-    let myHeaders = new Headers();
-    myHeaders.append("x-access-token", "openuv-2xtc3tlc6dy4ed-io");
-    myHeaders.append("Content-Type", "application/json");
+    // let myHeaders = new Headers();
+    // myHeaders.append("x-access-token", "openuv-2xtc3tlc6dy4ed-io");
+    // myHeaders.append("Content-Type", "application/json");
 
-    let requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow",
-    };
+    // let requestOptions = {
+    //   method: "GET",
+    //   headers: myHeaders,
+    //   redirect: "follow",
+    // };
 
-    /*
-    fetch(
-      "https://api.openuv.io/api/v1/uv?lat=6.62&lng=3.38&alt=100&dt=",
-      requestOptions
-    )
-      .then((response) => response.json())
-      .then((uvData) => {
-        console.log(uvData);
-        const uvIndex = document.getElementById("uvIndex");
-        const exposureLevel = document.getElementById("exposureLevel");
+    
+    // fetch(
+    //   "https://api.openuv.io/api/v1/uv?lat=6.62&lng=3.38&alt=100&dt=",
+    //   requestOptions
+    // )
+    //   .then((response) => response.json())
+    //   .then((uvData) => {
+    //     const uvIndex = document.getElementById("uvIndex");
+    //     const exposureLevel = document.getElementById("exposureLevel");
 
-        uvIndex.innerText = Math.round(uvData.result.uv);
+    //     uvIndex.innerText = Math.round(uvData.result.uv);
 
-        if (Math.round(uvData.result.uv) < 2) {
-          exposureLevel.innerText = "Low";
-        } else if (
-          (Math.round(uvData.result.uv) >= 3) &
-          (Math.round(uvData.result.uv) <= 5)
-        ) {
-          exposureLevel.innerText = "Moderate";
-        } else if (
-          (Math.round(uvData.result.uv) >= 6) &
-          (Math.round(uvData.result.uv) <= 8)
-        ) {
-          exposureLevel.innerText = "High";
-        } else if (
-          (Math.round(uvData.result.uv) >= 9) &
-          (Math.round(uvData.result.uv) <= 10)
-        ) {
-          exposureLevel.innerText = "Very High";
-        } else if (Math.round(uvData.result.uv) >= 11 ) {
-          exposureLevel.innerText = "Extreme";
-        }
-      })
-      .catch((err) => console.log("Error: ", err));
-    */
+    //     if (Math.round(uvData.result.uv) < 2) {
+    //       exposureLevel.innerText = "Low";
+    //     } else if (
+    //       (Math.round(uvData.result.uv) >= 3) &
+    //       (Math.round(uvData.result.uv) <= 5)
+    //     ) {
+    //       exposureLevel.innerText = "Moderate";
+    //     } else if (
+    //       (Math.round(uvData.result.uv) >= 6) &
+    //       (Math.round(uvData.result.uv) <= 8)
+    //     ) {
+    //       exposureLevel.innerText = "High";
+    //     } else if (
+    //       (Math.round(uvData.result.uv) >= 9) &
+    //       (Math.round(uvData.result.uv) <= 10)
+    //     ) {
+    //       exposureLevel.innerText = "Very High";
+    //     } else if (Math.round(uvData.result.uv) >= 11 ) {
+    //       exposureLevel.innerText = "Extreme";
+    //     }
+    //   })
+    //   .catch((err) => console.log("Error: ", err));
+
+
+    const weatherView = document.getElementById("weatherView")
+    const citiesView = document.getElementById("citiesView");
+    const mainSection = document.getElementById("mainSection");
+    const citiesSection = document.getElementById("citiesSection");
+
+    weatherView.addEventListener("click", () => {
+      if (mainSection.classList.contains("hidden")) {
+        mainSection.classList.remove("hidden");
+        mainSection.classList.add("grid");
+        mainSection.classList.add("allIL:flex");
+        citiesSection.classList.remove("flex")
+        citiesSection.classList.add("hidden");
+      }
+    })
+
+    citiesView.addEventListener("click", () => {
+      if (citiesSection.classList.contains("hidden")) {
+        citiesSection.classList.remove("hidden");
+        citiesSection.classList.add("flex");
+        mainSection.classList.remove("grid");
+        mainSection.classList.remove("allIL:flex");
+        mainSection.classList.add("hidden");
+      }
+    })
+
+    let searchBar = document.getElementById("searchBar");
+    searchBar.onsearch = () => {
+      let searchValue = searchBar.value;
+
+      const operation = {
+        method: "GET",
+        headers: { "X-Api-Key": "pudi7I4zHc4WnfedlyeDWg==qBFLxLBqZJJKr41x" },
+        contentType: "application/json",
+      };
+
+      fetch(
+        "https://api.api-ninjas.com/v1/geocoding?city=" + searchValue,
+        operation
+      )
+        .then((resp) => resp.json())
+        .then((cityData) => {
+          const cityTemplate = document.getElementById("cityTemplate");
+          const citiesResult = document.getElementById("citiesResult");
+          citiesResult.innerHTML = "";
+
+          cityTemplate.classList.remove("hidden");
+          cityTemplate.classList.add("flex");
+
+          let idNumber = 0
+
+          cityData.forEach((data) => {
+            const city = cityTemplate.cloneNode(true);
+
+            const lat = data.latitude;
+            const lon = data.longitude;
+
+            let location;
+
+            if (Object.keys(data).length == 5) {
+              location = data.name + ", " + data.state + ", " + data.country;
+            } else {
+              location = data.name + ", " + data.country;
+            }
+
+            const cityId = "condition" + idNumber;
+
+            idNumber++;
+
+            fetch(
+              `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`
+            )
+              .then((resp) => resp.json())
+              .then((jsonData) => {
+                city.innerHTML = `
+                  <h1 class="text-xl">${location}</h1>
+                  <h1 class="text-5xl">${jsonData.current_weather.temperature}°</h1>
+                  <h1 id="${cityId}" class="text-xl"></h1>
+                `;
+
+                let weatherCode = jsonData.current_weather.weathercode;
+                const cityConResult = document.getElementById(`${cityId}`);
+                gettingCurrentConditions(weatherCode, cityConResult);
+              })
+              .catch((err) => console.log("Error: " + err));
+
+            citiesResult.append(city);
+          });
+
+          cityTemplate.classList.remove("flex");
+          cityTemplate.classList.add("hidden");
+        })
+    }
   });
 }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vanes-Cities</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://kit.fontawesome.com/aae4243485.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-[#262626]">
+    <div class="h-screen p-8 flex gap-8 text-white mx-auto allIL:gap-10 allIL:flex-col allIL:h-fit lg:p-8 md:p-6 allEM:p-4 allT:p-4">
+        <nav class="background h-full w-[8%] z-10 rounded-3xl flex flex-col justify-between items-center py-8 shadow-2xl allIL:fixed allIL:bottom-0 allIL:left-0 allIL:w-screen allIL:rounded-none allIL:border-0 allIL:border-t allIL:border-white allIL:h-[8%] allIL:flex-row lg:px-8 md:px-8 allEM:px-0 allEM:justify-around allT:px-0 allT:justify-around">
+            <a href="#" class="text-5xl allT:text-4xl hover:text-black duration-300">G<span><i class="fa-solid fa-wind text-[41px] allT:text-[31px]"></i></span></a>
+
+            <ul class="flex flex-col gap-11 allIL:flex-row allIL:items-center 2xl:gap-20 lg:gap-40 md:gap-32 iphone5:gap-7 xtraSmall:gap-6">
+                <li><a title="Weather" href="index.html" class="w-[51px] h-[51px] rounded-full hover:bg-black duration-500 flex items-center justify-center allIL:w-auto allIL:h-auto allIL:hover:bg-transparent"><i class="fa-solid fa-cloud text-xl"></i></a></li>
+                <li><a title="Cities" href="#" class="w-[51px] h-[51px] rounded-full hover:bg-black duration-500 flex items-center justify-center allIL:w-auto allIL:h-auto allIL:hover:bg-transparent"><i class="fa-solid fa-city text-xl"></i></a></li>
+            </ul>
+
+            <a title="Sign-in" href="#" class="w-10 h-10 border rounded-full hover:bg-black duration-300 flex items-center justify-center allIL:hover:bg-transparent"><i class="fa-solid fa-user text-lg"></i></a>
+        </nav>
+
+        <section class="w-3/5 h-full flex flex-col gap-8 allIL:w-full hideScroll allIL:flex allIL:flex-col">
+            <form action="" method="get" class="w-full h-14 rounded-xl flex items-center overflow-hidden shadow-2xl allIL:h-14 background">
+                <i class="fa-solid fa-magnifying-glass px-3"></i>
+                <input title="searchBar" id="searchBar" type="search" placeholder="Search for a city" class="bg-transparent w-full h-full placeholder:text-white outline-none">
+            </form>
+
+            <section class="background flex flex-col gap-8 h-full rounded-3xl px-7 py-7 overflow-hidden">
+                <h1 class="text-5xl">Cities found:</h1>
+
+                <section id="citiesResult" class="h-full cities overflow-y-scroll hideScroll">
+                    <template data-city-template>
+                        <article class="w-52 h-52 flex flex-col items-start justify-around border rounded-3xl allEM:w-full allT:w-full px-5 py-5">
+                            <h1 class="text-3xl" data-location>Greenland</h1>
+                            <h1 class="text-5xl" data-temp>31°</h1>
+                            <h1 class="text-lg" data-condition>Clear sky</h2>
+                        </article>
+                    </template>
+                </section>
+            </section>
+        </section>
+
+        <section class="w-[30%] h-full rounded-3xl flex flex-col gap-6 px-7 py-7 shadow-2xl allIL:h-fit allIL:w-full lg:mb-[12%] md:mb-[13%] allEM:mb-[19%] allT:mb-[24%] xtraSmall:px-2 background">
+            <h1 class="text-3xl">7 - Day Forecast</h1>
+
+            <section id="dayForecasts" class="w-full h-full overflow-hidden flex flex-col">
+
+            </section>
+        </section>
+    </div>
+
+    <script src="cities.js"></script>
+</body>
+
+</html>

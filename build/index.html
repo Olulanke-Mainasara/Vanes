@@ -13,25 +13,16 @@
 </head>
 <body class="bg-[#262626]">
     <div class="h-screen p-8 flex gap-8 text-white mx-auto allIL:gap-10 allIL:flex-col allIL:h-fit lg:p-8 md:p-6 allEM:p-4 allT:p-4">
-        <nav class="background h-full w-[8%] z-10 rounded-3xl flex flex-col justify-between items-center py-8 shadow-2xl allIL:fixed allIL:bottom-0 allIL:left-0 allIL:w-screen allIL:rounded-none allIL:border-0 allIL:border-t allIL:border-white allIL:h-[8%] allIL:flex-row lg:px-8 md:px-8 allEM:px-0 allEM:justify-around allT:px-0 allT:justify-around">
+        <nav class="background h-full w-[8%] z-10 rounded-3xl flex flex-col justify-around items-center py-8 shadow-2xl allIL:fixed allIL:bottom-0 allIL:left-0 allIL:w-screen allIL:rounded-none allIL:border-0 allIL:border-t allIL:border-white allIL:h-[8%] allIL:flex-row lg:px-8 md:px-8 allEM:px-0 allEM:justify-around allT:px-0 allT:justify-around">
             <a href="#" class="text-5xl allT:text-4xl hover:text-black duration-300">G<span><i class="fa-solid fa-wind text-[41px] allT:text-[31px]"></i></span></a>
 
             <ul class="flex flex-col gap-11 allIL:flex-row allIL:items-center 2xl:gap-20 lg:gap-40 md:gap-32 iphone5:gap-7 xtraSmall:gap-6">
-                <li><a title="Weather" href="#" class="w-[51px] h-[51px] rounded-full hover:bg-black duration-500 flex items-center justify-center allIL:w-auto allIL:h-auto allIL:hover:bg-transparent"><i class="fa-solid fa-cloud text-xl"></i></a></li>
-                <li><a title="Cities" href="#" class="w-[51px] h-[51px] rounded-full hover:bg-black duration-500 flex items-center justify-center allIL:w-auto allIL:h-auto allIL:hover:bg-transparent"><i class="fa-solid fa-city text-xl"></i></a></li>
-                <li><a title="Map" href="#" class="w-[51px] h-[51px] rounded-full hover:bg-black duration-500 flex items-center justify-center allIL:w-auto allIL:h-auto allIL:hover:bg-transparent"><i class="fa-solid fa-location-dot text-xl"></i></a></li>
+                <li id="weatherView"><a title="Weather" href="#" class="w-[51px] h-[51px] rounded-full hover:bg-black duration-500 flex items-center justify-center allIL:w-auto allIL:h-auto allIL:hover:bg-transparent"><i class="fa-solid fa-cloud text-xl"></i></a></li>
+                <li id="citiesView"><a title="Cities" href="#" class="w-[51px] h-[51px] rounded-full hover:bg-black duration-500 flex items-center justify-center allIL:w-auto allIL:h-auto allIL:hover:bg-transparent"><i class="fa-solid fa-city text-xl"></i></a></li>
             </ul>
-
-            <a title="Sign-in" href="#" class="w-10 h-10 border rounded-full hover:bg-black duration-300 flex items-center justify-center allIL:hover:bg-transparent"><i class="fa-solid fa-user text-lg"></i></a>
         </nav>
 
-        <section class="w-3/5 h-full overflow-y-scroll grid grid-rows-3 gap-10 allIL:w-full hideScroll allIL:flex allIL:flex-col">
-            <!--
-            <form action="" method="get" class="w-full h-[8%] border rounded-xl flex items-center overflow-hidden shadow-2xl allIL:h-14 background">
-                <input title="searchBar" type="search" placeholder="Search for cities" class="bg-transparent w-full h-full pl-5 placeholder:text-white outline-none">
-            </form>
-            --->
-
+        <section id="mainSection" class="w-3/5 h-full overflow-y-scroll grid grid-rows-3 gap-10 allIL:w-full hideScroll allIL:flex allIL:flex-col">
             <section class="w-full grid grid-cols-3 allIL:h-fit gap-6 allEM:grid-cols-2 allT:grid-cols-1">
                 <section class="h-full rounded-3xl border flex flex-col justify-evenly items-center shadow-2xl lg:h-48 md:h-48 allEM:h-44 allT:h-44">
                     <h1 id="currentLocation" class="text-lg">- -</h1>
@@ -93,6 +84,25 @@
                         <h1 class="text-lg">Sunrise</h1>
                         <h1 id="sunrise" class="text-3xl allEM:text-2xl allT:text-xl">- -</h1>
                     </div>
+                </section>
+            </section>
+        </section>
+
+        <section id="citiesSection" class="w-3/5 h-full hidden flex-col gap-8 allIL:w-full hideScroll">
+            <div 
+                class="w-full h-14 rounded-xl flex items-center overflow-hidden shadow-2xl allIL:h-14 background">
+                <i class="fa-solid fa-magnifying-glass px-3"></i>
+                <input title="searchBar" id="searchBar" type="search" placeholder="Search for a city"
+                    class="bg-transparent w-full h-full placeholder:text-white outline-none">
+            </div>
+        
+            <section class="background flex flex-col gap-8 h-full rounded-3xl px-7 py-7 overflow-hidden">
+                <h1 class="text-5xl">Cities found:</h1>
+        
+                <section id="citiesResult" class="h-full cities overflow-y-scroll hideScroll">
+                    <article id="cityTemplate" class="w-52 h-52 hidden flex-col items-start justify-around border rounded-3xl allEM:w-full allT:w-full px-5 py-5">
+                        
+                    </article>
                 </section>
             </section>
         </section>

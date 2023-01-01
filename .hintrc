@@ -12,7 +12,8 @@
           "overscroll-behavior-x",
           "overscroll-behavior-y",
           "scroll-behavior",
-          "overscroll-behavior"
+          "overscroll-behavior",
+          "height: fit-content"
         ]
       }
     ]
