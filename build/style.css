@@ -538,10 +538,6 @@ video {
   margin-right: auto;
 }
 
-.block {
-  display: block;
-}
-
 .flex {
   display: flex;
 }
@@ -698,12 +694,6 @@ video {
 
 .gap-6 {
   gap: 1.5rem;
-}
-
-.space-y-10 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(2.5rem * var(--tw-space-y-reverse));
 }
 
 .overflow-hidden {
@@ -1046,21 +1036,12 @@ video {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .allEM\:justify-around {
-    justify-content: space-around;
-  }
-
   .allEM\:gap-5 {
     gap: 1.25rem;
   }
 
   .allEM\:p-4 {
     padding: 1rem;
-  }
-
-  .allEM\:px-0 {
-    padding-left: 0px;
-    padding-right: 0px;
   }
 
   .allEM\:px-5 {
@@ -1207,10 +1188,6 @@ video {
 
   .allIL\:w-full {
     width: 100%;
-  }
-
-  .allIL\:grid-rows-none {
-    grid-template-rows: none;
   }
 
   .allIL\:flex-row {

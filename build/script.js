@@ -161,7 +161,10 @@ function getWeatherForecast() {
 
           if (window.innerWidth > 1309) {
             dayForecasts2.append(dayForecast);
-          } else {
+          } else if (window.innerWidth = 1366 & window.innerHeight <= 1204) {
+            dayForecasts2.append(dayForecast);
+          }
+          else {
             dayForecasts1.append(dayForecast);
           }
 
