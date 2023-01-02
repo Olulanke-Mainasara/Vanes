@@ -2,6 +2,9 @@ geolocationSupported();
 
 function geolocationSupported() {
   if (navigator.geolocation) {
+    gsap.to(".progress", { width: "100%", duration: 2 });
+    gsap.to(".overlayText", { opacity: 0, delay: 2.5, duration: .7 });
+    gsap.to(".overLay", { y: "-100vh", delay: 3.4, duration: .7 });
     getWeatherForecast();
   } else {
     alert("Error: Geolocation is NOT supported by this browser :(");
