@@ -337,7 +337,7 @@ function getWeatherForecast() {
 
         uvIndex.innerText = Math.round(uvData.result.uv);
 
-        if (Math.round(uvData.result.uv) < 2) {
+        if (Math.round(uvData.result.uv) <= 2) {
           exposureLevel.innerText = "Low";
         } else if (
           (Math.round(uvData.result.uv) >= 3) &
