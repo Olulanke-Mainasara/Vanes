@@ -12,7 +12,7 @@
     <script src="https://kit.fontawesome.com/aae4243485.js" crossorigin="anonymous"></script>
 </head>
 <body class="bg-[#262626] h-screen">
-    <div class="h-screen p-8 flex gap-8 text-white mx-auto allIL:gap-10 allIL:flex-col allIL:h-full allIL:overflow-y-scroll lg:p-8 md:p-6 allEM:p-4 allT:p-4">
+    <div class="h-screen p-8 flex gap-8 text-white mx-auto allIL:gap-10 allIL:flex-col allIL:h-full allIL:overflow-y-scroll lg:p-8 lg:pt-16 md:p-6 md:pt-12 allEM:p-4 allEM:pt-8 allT:p-4 allT:pt-8">
         <nav class="background h-full w-[8%] z-10 rounded-3xl flex flex-col justify-between items-center py-8 shadow-2xl allIL:fixed allIL:bottom-0 allIL:left-0 allIL:w-screen allIL:rounded-none allIL:border-0 allIL:border-t allIL:border-white allIL:h-[8%] allIL:flex-row lg:px-8 md:px-8 allEM:px-5 allT:px-5 allT:justify-between">
             <a href="#" class="text-5xl allT:text-4xl hover:text-black duration-300">G<i class="fa-solid fa-wind text-[41px] allT:text-[31px]"></i></a>
 
@@ -22,7 +22,7 @@
             </ul>
         </nav>
 
-        <section id="mainSection" class="w-3/5 h-full overflow-y-scroll grid grid-rows-3 gap-10 allIL:w-full hideScroll allIL:block allIL:space-y-10 lg:mb-[12%] md:mb-[13%] allEM:mb-[19%] allT:mb-[24%]">
+        <section id="mainSection" class="w-3/5 h-full overflow-y-scroll grid grid-rows-3 gap-10 allIL:w-full hideScroll allIL:block allIL:space-y-10 lg:pb-[12%] md:pb-[13%] allEM:pb-[19%] allT:pb-[24%]">
             <section class="w-full grid grid-cols-3 allIL:h-fit gap-6 allEM:grid-cols-2 allT:grid-cols-1">
                 <section class="h-full rounded-3xl border flex flex-col justify-evenly items-center shadow-2xl lg:h-48 md:h-48 allEM:h-44 allT:h-44">
                     <h1 id="currentLocation" class="text-lg">- -</h1>
@@ -87,7 +87,7 @@
                 </section>
             </section>
 
-            <section class="laptop:hidden rounded-3xl flex flex-col gap-6 px-7 py-7 shadow-2xl h-fit w-full xtraSmall:px-2 background">
+            <section class="laptop:hidden rounded-3xl flex flex-col gap-6 px-7 py-7 shadow-2xl h-fit w-full xtraSmall:px-2 background lg:mb-[12%] md:mb-[13%] allEM:mb-[19%] allT:mb-[24%]">
                 <h1 class="text-3xl">7 - Day Forecast</h1>
             
                 <section id="dayForecasts1" class="w-full h-full overflow-hidden flex flex-col">
@@ -96,7 +96,7 @@
             </section>
         </section>
 
-        <section id="citiesSection" class="w-3/5 h-full hidden flex-col gap-8 allIL:w-full hideScroll">
+        <section id="citiesSection" class="w-3/5 h-full overflow-y-scroll hidden flex-col gap-8 allIL:w-full hideScroll lg:mb-[12%] md:mb-[13%] allEM:mb-[19%] allT:mb-[24%]">
             <div class="w-full h-14 rounded-xl flex items-center overflow-hidden shadow-2xl allIL:h-14 background">
                 <i class="fa-solid fa-magnifying-glass px-3"></i>
                 <input title="searchBar" id="searchBar" type="search" placeholder="Search for a city" class="bg-transparent w-full h-full placeholder:text-white outline-none">

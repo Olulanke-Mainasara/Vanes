@@ -315,50 +315,50 @@ function getWeatherForecast() {
       })
       .catch((err) => console.log("Error: " + err));
 
-    // let myHeaders = new Headers();
-    // myHeaders.append("x-access-token", "openuv-2xtc3tlc6dy4ed-io");
-    // myHeaders.append("Content-Type", "application/json");
+    let myHeaders = new Headers();
+    myHeaders.append("x-access-token", "openuv-2xtc3tlc6dy4ed-io");
+    myHeaders.append("Content-Type", "application/json");
 
-    // let requestOptions = {
-    //   method: "GET",
-    //   headers: myHeaders,
-    //   redirect: "follow",
-    // };
+    let requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
 
     
-    // fetch(
-    //   "https://api.openuv.io/api/v1/uv?lat=6.62&lng=3.38&alt=100&dt=",
-    //   requestOptions
-    // )
-    //   .then((response) => response.json())
-    //   .then((uvData) => {
-    //     const uvIndex = document.getElementById("uvIndex");
-    //     const exposureLevel = document.getElementById("exposureLevel");
+    fetch(
+      "https://api.openuv.io/api/v1/uv?lat=6.62&lng=3.38&alt=100&dt=",
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((uvData) => {
+        const uvIndex = document.getElementById("uvIndex");
+        const exposureLevel = document.getElementById("exposureLevel");
 
-    //     uvIndex.innerText = Math.round(uvData.result.uv);
+        uvIndex.innerText = Math.round(uvData.result.uv);
 
-    //     if (Math.round(uvData.result.uv) < 2) {
-    //       exposureLevel.innerText = "Low";
-    //     } else if (
-    //       (Math.round(uvData.result.uv) >= 3) &
-    //       (Math.round(uvData.result.uv) <= 5)
-    //     ) {
-    //       exposureLevel.innerText = "Moderate";
-    //     } else if (
-    //       (Math.round(uvData.result.uv) >= 6) &
-    //       (Math.round(uvData.result.uv) <= 8)
-    //     ) {
-    //       exposureLevel.innerText = "High";
-    //     } else if (
-    //       (Math.round(uvData.result.uv) >= 9) &
-    //       (Math.round(uvData.result.uv) <= 10)
-    //     ) {
-    //       exposureLevel.innerText = "Very High";
-    //     } else if (Math.round(uvData.result.uv) >= 11 ) {
-    //       exposureLevel.innerText = "Extreme";
-    //     }
-    //   })
-    //   .catch((err) => console.log("Error: ", err));
+        if (Math.round(uvData.result.uv) < 2) {
+          exposureLevel.innerText = "Low";
+        } else if (
+          (Math.round(uvData.result.uv) >= 3) &
+          (Math.round(uvData.result.uv) <= 5)
+        ) {
+          exposureLevel.innerText = "Moderate";
+        } else if (
+          (Math.round(uvData.result.uv) >= 6) &
+          (Math.round(uvData.result.uv) <= 8)
+        ) {
+          exposureLevel.innerText = "High";
+        } else if (
+          (Math.round(uvData.result.uv) >= 9) &
+          (Math.round(uvData.result.uv) <= 10)
+        ) {
+          exposureLevel.innerText = "Very High";
+        } else if (Math.round(uvData.result.uv) >= 11 ) {
+          exposureLevel.innerText = "Extreme";
+        }
+      })
+      .catch((err) => console.log("Error: ", err));
 
 
     const weatherView = document.getElementById("weatherView")
@@ -370,7 +370,7 @@ function getWeatherForecast() {
       if (mainSection.classList.contains("hidden")) {
         mainSection.classList.remove("hidden");
         mainSection.classList.add("grid");
-        mainSection.classList.add("allIL:flex");
+        mainSection.classList.add("allIL:block");
         citiesSection.classList.remove("flex")
         citiesSection.classList.add("hidden");
       }
@@ -381,7 +381,7 @@ function getWeatherForecast() {
         citiesSection.classList.remove("hidden");
         citiesSection.classList.add("flex");
         mainSection.classList.remove("grid");
-        mainSection.classList.remove("allIL:flex");
+        mainSection.classList.remove("allIL:block");
         mainSection.classList.add("hidden");
       }
     })
