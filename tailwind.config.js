@@ -24,6 +24,9 @@ module.exports = {
       allIL: { max: "1309px" },
       // => @media (max-width: 1309px) { ... }
 
+      laptop: { min: "1310px" },
+      // => @media (max-width: 1309px) { ... }
+
       "2xl": { min: "1536px" },
       // => @media (min-width: 1536px) { ... }
     },
