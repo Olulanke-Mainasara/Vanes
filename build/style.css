@@ -538,6 +538,10 @@ video {
   margin-right: auto;
 }
 
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
 .flex {
   display: flex;
 }
@@ -832,6 +836,11 @@ video {
   line-height: 1.5rem;
 }
 
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -962,6 +971,12 @@ input[type="search"]::-webkit-search-results-decoration {
     margin-left: calc(1.75rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
+  .iphone5\:space-x-6 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+    margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
   .iphone5\:text-8xl {
     font-size: 6rem;
     line-height: 1;
@@ -975,6 +990,10 @@ input[type="search"]::-webkit-search-results-decoration {
 @media (max-width: 321px) {
   .allT\:mb-\[24\%\] {
     margin-bottom: 24%;
+  }
+
+  .allT\:hidden {
+    display: none;
   }
 
   .allT\:h-44 {
@@ -1061,6 +1080,10 @@ input[type="search"]::-webkit-search-results-decoration {
     margin-bottom: 19%;
   }
 
+  .allEM\:hidden {
+    display: none;
+  }
+
   .allEM\:h-44 {
     height: 11rem;
   }
@@ -1083,6 +1106,12 @@ input[type="search"]::-webkit-search-results-decoration {
 
   .allEM\:gap-5 {
     gap: 1.25rem;
+  }
+
+  .allEM\:space-x-11 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(2.75rem * var(--tw-space-x-reverse));
+    margin-left: calc(2.75rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .allEM\:p-4 {
@@ -1316,6 +1345,11 @@ input[type="search"]::-webkit-search-results-decoration {
 
   .allIL\:hover\:bg-transparent:hover {
     background-color: transparent;
+  }
+
+  .allIL\:hover\:text-white:hover {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
   }
 }
 

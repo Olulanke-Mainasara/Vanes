@@ -18,11 +18,12 @@
 <body class="bg-[#262626] h-screen">
     <div class="h-screen p-8 flex gap-8 text-white mx-auto allIL:gap-10 allIL:flex-col allIL:h-full allIL:overflow-y-scroll lg:p-8 lg:pt-16 md:p-6 md:pt-12 allEM:p-4 allEM:pt-8 allT:p-4 allT:pt-8">
         <nav class="background h-full w-[8%] z-10 rounded-3xl flex flex-col justify-between items-center py-8 shadow-2xl allIL:fixed allIL:bottom-0 allIL:left-0 allIL:w-screen allIL:rounded-none allIL:border-0 allIL:border-t allIL:border-white allIL:h-[8%] allIL:flex-row lg:px-8 md:px-8 allEM:px-5 allT:px-5 allT:justify-between">
-            <a href="#" class="text-5xl allT:text-4xl hover:text-black duration-300">G<i class="fa-solid fa-wind text-[41px] allT:text-[31px]"></i></a>
+            <a href="#" class="text-5xl allT:text-4xl hover:text-black allIL:hover:text-white duration-300">G<i class="fa-solid fa-wind text-[41px] allT:text-[31px]"></i></a>
 
-            <ul class="flex flex-col gap-11 allIL:flex-row allIL:items-center 2xl:gap-20 lg:space-x-40 md:space-x-32 iphone5:space-x-7 xtraSmall:space-x-6">
+            <ul class="flex flex-col gap-11 items-center allIL:flex-row allIL:items-center 2xl:gap-20 lg:space-x-40 md:space-x-32 allEM:space-x-11 iphone5:space-x-7 xtraSmall:space-x-6">
                 <li id="weatherView"><a title="Weather" href="#" class="w-[51px] h-[51px] rounded-full hover:bg-black duration-500 flex items-center justify-center allIL:w-auto allIL:h-auto allIL:hover:bg-transparent"><i class="fa-solid fa-cloud text-xl"></i></a></li>
                 <li id="citiesView"><a title="Cities" href="#" class="w-[51px] h-[51px] rounded-full hover:bg-black duration-500 flex items-center justify-center allIL:w-auto allIL:h-auto allIL:hover:bg-transparent"><i class="fa-solid fa-city text-xl"></i></a></li>
+                <li class="text-sm allEM:hidden allT:hidden">©Vanes 2023</li>
             </ul>
         </nav>
 
@@ -35,7 +36,7 @@
                 </section>
 
                 <section class="h-full rounded-3xl border flex flex-col justify-evenly items-center shadow-2xl lg:h-48 md:h-48 allEM:h-44 allT:h-44">
-                    <h1 class="text-xl">Wind Status</h1>
+                    <h1 class="text-xl">Wind Speed</h1>
                     <h1 id="windSpeed" class="text-7xl allEM:text-5xl allT:text-5xl">- -</h1>
                     <h1 class="text-xl">m/s</h1>
                 </section>
