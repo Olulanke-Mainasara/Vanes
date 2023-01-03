@@ -925,8 +925,10 @@ input[type="search"]::-webkit-search-results-decoration {
     width: 16rem;
   }
 
-  .xtraSmall\:gap-6 {
-    gap: 1.5rem;
+  .xtraSmall\:space-x-6 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+    margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .xtraSmall\:px-2 {
@@ -954,8 +956,10 @@ input[type="search"]::-webkit-search-results-decoration {
     width: 18rem;
   }
 
-  .iphone5\:gap-7 {
-    gap: 1.75rem;
+  .iphone5\:space-x-7 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1.75rem * var(--tw-space-x-reverse));
+    margin-left: calc(1.75rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .iphone5\:text-8xl {
@@ -1069,10 +1073,6 @@ input[type="search"]::-webkit-search-results-decoration {
     width: 100%;
   }
 
-  .allEM\:w-\[360px\] {
-    width: 360px;
-  }
-
   .allEM\:w-\[340px\] {
     width: 340px;
   }
@@ -1140,8 +1140,10 @@ input[type="search"]::-webkit-search-results-decoration {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .md\:gap-32 {
-    gap: 8rem;
+  .md\:space-x-32 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(8rem * var(--tw-space-x-reverse));
+    margin-left: calc(8rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .md\:p-6 {
@@ -1171,8 +1173,10 @@ input[type="search"]::-webkit-search-results-decoration {
     height: 12rem;
   }
 
-  .lg\:gap-40 {
-    gap: 10rem;
+  .lg\:space-x-40 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(10rem * var(--tw-space-x-reverse));
+    margin-left: calc(10rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .lg\:p-8 {
@@ -1275,6 +1279,18 @@ input[type="search"]::-webkit-search-results-decoration {
     --tw-space-y-reverse: 0;
     margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(2.5rem * var(--tw-space-y-reverse));
+  }
+
+  .allIL\:space-y-6 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+  }
+
+  .allIL\:space-y-8 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(2rem * var(--tw-space-y-reverse));
   }
 
   .allIL\:overflow-y-scroll {
