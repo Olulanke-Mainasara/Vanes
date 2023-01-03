@@ -1,16 +1,22 @@
+// Main function
 geolocationSupported();
 
+// Geolocation determiner function
 function geolocationSupported() {
   if (navigator.geolocation) {
+    // Onload webpage animation
     gsap.to(".progress", { width: "100%", duration: 2 });
     gsap.to(".overlayText", { opacity: 0, delay: 2.5, duration: .7 });
     gsap.to(".overLay", { y: "-100vh", delay: 3.4, duration: .7 });
+
+    // Function to acquire all information and forecasts
     getWeatherForecast();
   } else {
     alert("Error: Geolocation is NOT supported by this browser :(");
   }
 }
 
+// Function to get current weather condition based on the weathercode from the API
 function gettingCurrentConditions(usingToDet, element) {
   switch (usingToDet) {
     case 0:
@@ -106,6 +112,7 @@ function gettingCurrentConditions(usingToDet, element) {
 
 function getWeatherForecast() {
   navigator.geolocation.getCurrentPosition((result) => {
+    // To get the current location weather information using the "open-meteo" API
     fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${result.coords.latitude}&longitude=${result.coords.longitude}&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,weathercode,pressure_msl,visibility,windspeed_80m,winddirection_80m&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset&current_weather=true&windspeed_unit=ms&timezone=auto`
     )
@@ -128,6 +135,7 @@ function getWeatherForecast() {
 
         const accurateDate = new Date();
 
+        // To render the 7-day weather forecasts
         jsonData.daily.time.forEach((element) => {
           let weatherCode = jsonData.daily.weathercode[position];
 
@@ -174,6 +182,7 @@ function getWeatherForecast() {
           position++;
         });
 
+        // To render the hourly air conditions
         jsonData.hourly.time.forEach((element) => {
           let splittedElement = element.split("T");
 
@@ -194,25 +203,19 @@ function getWeatherForecast() {
 
             const elementIndex = jsonData.hourly.time.indexOf(element);
 
-            realFeel.innerText =
-              jsonData.hourly.apparent_temperature[elementIndex] + "°";
-            visibility.innerText =
-              jsonData.hourly.visibility[elementIndex] / 1000 + "km";
-            humidity.innerText =
-              jsonData.hourly.relativehumidity_2m[elementIndex] + "%";
-            pressure.innerText =
-              Math.round(jsonData.hourly.pressure_msl[elementIndex]) + "hPa";
-            windDirection.innerText =
-              jsonData.hourly.winddirection_80m[elementIndex] + "°";
-            windSpeed.innerText = Math.round(
-              jsonData.hourly.windspeed_80m[elementIndex]
-            );
+            realFeel.innerText = jsonData.hourly.apparent_temperature[elementIndex] + "°";
+            visibility.innerText = jsonData.hourly.visibility[elementIndex] / 1000 + "km";
+            humidity.innerText = jsonData.hourly.relativehumidity_2m[elementIndex] + "%";
+            pressure.innerText = Math.round(jsonData.hourly.pressure_msl[elementIndex]) + "hPa";
+            windDirection.innerText = jsonData.hourly.winddirection_80m[elementIndex] + "°";
+            windSpeed.innerText = Math.round(jsonData.hourly.windspeed_80m[elementIndex]);
           }
         });
 
         const sunset = document.getElementById("sunset");
         const sunrise = document.getElementById("sunrise");
 
+        // To render the daily sunset time
         jsonData.daily.sunset.forEach((element) => {
           let splittedSunElement = element.split("T");
 
@@ -225,6 +228,7 @@ function getWeatherForecast() {
           }
         });
 
+        // To render the daily sunrise time
         jsonData.daily.sunrise.forEach((element) => {
           let splittedSunElement = element.split("T");
 
@@ -242,6 +246,7 @@ function getWeatherForecast() {
           }
         });
 
+        //To render the hourly weather forecasts
         jsonData.hourly.time.filter((element) => {
           let splittedElement = element.split("T");
 
@@ -315,6 +320,8 @@ function getWeatherForecast() {
       })
       .catch((err) => console.log("Error: " + err));
 
+
+    // To get the current location U.V index using the "openuv.io" api
     let myHeaders = new Headers();
     myHeaders.append("x-access-token", "openuv-2xtc3tlc6dy4ed-io");
     myHeaders.append("Content-Type", "application/json");
@@ -325,7 +332,6 @@ function getWeatherForecast() {
       redirect: "follow",
     };
 
-    
     fetch(
       "https://api.openuv.io/api/v1/uv?lat=6.62&lng=3.38&alt=100&dt=",
       requestOptions
@@ -361,6 +367,7 @@ function getWeatherForecast() {
       .catch((err) => console.log("Error: ", err));
 
 
+    // To add event listeners to the nav buttons
     const weatherView = document.getElementById("weatherView")
     const citiesView = document.getElementById("citiesView");
     const mainSection = document.getElementById("mainSection");
@@ -386,6 +393,8 @@ function getWeatherForecast() {
       }
     })
 
+
+    // To get the city informations using the "api-ninjas" geolocation API
     let searchBar = document.getElementById("searchBar");
     searchBar.onsearch = () => {
       let searchValue = searchBar.value;
@@ -429,6 +438,8 @@ function getWeatherForecast() {
 
             idNumber++;
 
+            // To get the current temperature and weather condition using the "open-meteo" API based on the
+            // information from the "api-ninjas" geolocation API
             fetch(
               `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`
             )
