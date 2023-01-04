@@ -538,10 +538,6 @@ video {
   margin-right: auto;
 }
 
-.mt-5 {
-  margin-top: 1.25rem;
-}
-
 .flex {
   display: flex;
 }
@@ -632,12 +628,16 @@ video {
   width: 500px;
 }
 
-.w-0 {
-  width: 0px;
+.w-1\/2 {
+  width: 50%;
 }
 
 .w-32 {
   width: 8rem;
+}
+
+.w-0 {
+  width: 0px;
 }
 
 .grid-cols-3 {
@@ -803,6 +803,11 @@ video {
   line-height: 1.75rem;
 }
 
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -834,11 +839,6 @@ video {
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
-}
-
-.text-sm {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
 }
 
 .text-white {
@@ -909,6 +909,10 @@ input[type="search"]::-webkit-search-results-decoration {
   display: none;
 }
 
+.shadows {
+  text-shadow: 20px 20px 50px rgba(0, 0, 0, 1);
+}
+
 .placeholder\:text-white::-moz-placeholder {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -969,12 +973,6 @@ input[type="search"]::-webkit-search-results-decoration {
     --tw-space-x-reverse: 0;
     margin-right: calc(1.75rem * var(--tw-space-x-reverse));
     margin-left: calc(1.75rem * calc(1 - var(--tw-space-x-reverse)));
-  }
-
-  .iphone5\:space-x-6 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-x-reverse: 0;
-    margin-right: calc(1.5rem * var(--tw-space-x-reverse));
-    margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .iphone5\:text-8xl {
